@@ -1,71 +1,61 @@
 #include "Bird.h"
-#include "Globals.h"
-
+#include"Globals.h"
 Bird::Bird() :
-	gravity(20),
-	h_velocity(350),
-	counter(0),	
-	switch_bird(0),
-	
-	shouldfly(true) 
-{	//image load of bird
-	birdtexture[0].loadFromFile("assets/birdup.png");
-	birdtexture[1].loadFromFile("assets/birddown.png");
-	
-
-	//to show loaded image
-	birdsprite.setTexture(birdtexture[0]);
-	
-	birdsprite.setScale(scalefactor, scalefactor);
-
-	
-}
-void Bird::setfly(bool shouldfly)
+	gravity(10),
+	flap_speed(250),
+	anim_counter(0),
+	texture_switch(1),
+	should_fly(false)
 {
-	this->shouldfly = shouldfly;
+	texture[0].loadFromFile("assets/birddown.png");
+	texture[1].loadFromFile("assets/birdup.png");
+
+	bird_sprite.setTexture(texture[0]);
+	bird_sprite.setScale(scale_factor, scale_factor);
+	resetbirdposition();
 }
 void Bird::update(sf::Time& dt)
 {
-	if (birdsprite.getGlobalBounds().top < 548&&shouldfly) {
-		if (counter == 5) {
-			birdsprite.setTexture(birdtexture[switch_bird]);
-			if (switch_bird == 1) {
-				switch_bird = 0;
-
+	if (bird_sprite.getGlobalBounds().top < 538 && should_fly)
+	{
+		if (anim_counter == 5)
+		{
+			bird_sprite.setTexture(texture[texture_switch]);
+			if (texture_switch)
+			{
+				texture_switch = 0;
 			}
-			else {
-				switch_bird = 1;
+			else
+			{
+				
+				texture_switch = 1;
 			}
-			counter = 0;
+			anim_counter = 0;
 		}
-		counter++;
-		v_velocity += gravity * dt.asSeconds();
-		birdsprite.move(0, v_velocity);
+		anim_counter++;
+		velocity_y += gravity * dt.asSeconds();
+		bird_sprite.move(0, velocity_y);
 
-		if (birdsprite.getGlobalBounds().top < 0) {
-
-			birdsprite.setPosition(100, 0);
+		if (bird_sprite.getGlobalBounds().top < 0) 
+		{
+			bird_sprite.setPosition(100, 0);
 		}
-
 	}
-	else {
-		resetbirdposition();
-	}
-		
-	
-    }
-float Bird::getrightpoint()
-{
-	return birdsprite.getGlobalBounds().left + birdsprite.getGlobalBounds().width;
 }
-
-void Bird::flapbird(sf::Time&dt)
+void Bird::flapBird(sf::Time& dt)
 {
-	v_velocity=-h_velocity * dt.asSeconds();
+	velocity_y = -flap_speed * dt.asSeconds();
 }
-
+float Bird::getrightbound()
+{
+	return bird_sprite.getGlobalBounds().left+bird_sprite.getGlobalBounds().width;
+}
 void Bird::resetbirdposition()
 {
-	birdsprite.setPosition(100.f, 100.f);
-	v_velocity = 0;
+	bird_sprite.setPosition(100, 50);
+	velocity_y = 0;
+}
+void Bird::setShouldfly(bool should_fly)
+{
+	this->should_fly = should_fly;
 }
