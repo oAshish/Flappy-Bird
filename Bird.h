@@ -2,26 +2,24 @@
 #include<SFML/Graphics.hpp>
 class Bird
 {
-public:
-	//sf::Texture birdtexture;
-	sf::Sprite birdsprite;
-	sf::Texture birdtexture[2];
-	Bird();
-	void setfly(bool);
-	void flapbird(sf::Time &dt);
-	void resetbirdposition();
-	void update(sf::Time& dt);
-	float getrightpoint();
-	
-
 private:
-	
-	const int gravity;
-	const int h_velocity;
-	float v_velocity;
-	int counter, switch_bird;
-	bool shouldfly;
-	
+	sf::Texture texture[2];
+	const int gravity ;
+	const int flap_speed ;
+	float velocity_y;
+	int anim_counter, texture_switch;
+	bool should_fly;
+
+public:
+	sf::Sprite bird_sprite;
+	Bird();
+	void setShouldfly(bool);
+	void flapBird(sf::Time &dt);
+	void resetbirdposition();
+	void update(sf::Time&);
+	float getrightbound();
+
+
 
 };
 
