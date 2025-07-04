@@ -4,13 +4,13 @@ Welcome! This is a C++ remake of the classic Flappy Bird game. If you’ve ever 
 
 ---
 
-## 🕹️ What is This?
+##  What is This?
 
 A simple, faithful clone of the original Flappy Bird, built using C++ and [SFML](https://www.sfml-dev.org/). The graphics are intentionally simple. The goal is the same: keep your bird in the air and avoid the pipes. Try to beat your best score, and don’t be afraid to fail a few (hundred) times!
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -48,7 +48,7 @@ A simple, faithful clone of the original Flappy Bird, built using C++ and [SFML]
 
 ---
 
-## 🎮 How to Play
+##  How to Play
 
 - **Press SPACE** to make the bird flap upwards.
 - **Let go** to let gravity pull the bird down.
@@ -74,7 +74,7 @@ Flappy-Bird/
 
 
 
-## 🤝 Contributing
+##  Contributing
 
 Want to help out, add a feature, or fix a bug? Awesome! Please fork this repo and open a pull request with your changes.
 
@@ -86,13 +86,8 @@ Want to help out, add a feature, or fix a bug? Awesome! Please fork this repo an
 
 ---
 
-## 📜 License
 
-MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-## 🙏 Thanks
+##  Thanks
 
 - [SFML](https://www.sfml-dev.org/) for making graphics easy.
 - Dong Nguyen for the original Flappy Bird.
